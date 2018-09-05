@@ -19,6 +19,7 @@
 *
 *
 * ESC used     - Hobbywing Quicrun 60A 2S-3S Waterproof Brushed ESC for 1/10
+* ESC buy link (Affiliate) https://amzn.to/2Q76YlX
 ********************************************************************************************************/
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Include the Bounce2 library found here :
