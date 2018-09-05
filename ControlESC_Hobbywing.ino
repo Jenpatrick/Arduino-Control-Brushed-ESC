@@ -7,11 +7,17 @@
 * modified 09 Feb 2017
 * by TungstenEXE
 *
+* Modified 9/5/2018 by Jennifer Patrick
+*
+* https://kalinerf.com
+*  
 * If you find my code useful, do support me by subscribing my YouTube Channel, thanks.
 *
 * My YouTube Channel Link - Nerf related
 * https://www.youtube.com/channel/UCDMDwz4Hf8E0R0khyh40SxQ
 * 
+*
+*
 * ESC used     - Hobbywing Quicrun 60A 2S-3S Waterproof Brushed ESC for 1/10
 ********************************************************************************************************/
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -21,18 +27,25 @@
 #include <Bounce2.h>
 #include <Servo.h>
 
-#define PIN_PMETER          A5    // PIN Potentiometer
-#define PIN_PUSHERESC       3     // PIN to control ESC, normally the white wire from ESC 
-#define PIN_BTN             7     // PIN for button to On/Off reading from Potentiometer
+#define PIN_PMETER          A5    // PIN Potentiometer (analog)
+#define PIN_PUSHERESC       3     // PIN to control ESC, normally the white wire from ESC  (digital)
+#define PIN_BTN             7     // PIN for button to On/Off reading from Potentiometer (digital)
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////
  * The following are the setting for the ESC used, for other ESC, just chnage setting according to
  * ESC Spec
  *///////////////////////////////////////////////////////////////////////////////////////////////////////
-#define THROTTLE_MIN        1500
+#define THROTTLE_MIN        1500 // Check the ESC datasheet
 #define THROTTLE_MAX        2000
 #define THROTTLE_BAKE       1000
 // End of ESC setting ///////////////////////////////////////////////////////////////////////////////////
+
+
+/*/
+*
+* Enable serial monitor in the arduino or platform.io ide:
+*  https://www.instructables.com/id/HOW-TO-use-the-ARDUINO-SERIAL-MONITOR/
+*/
 
 int     throttle      = THROTTLE_MIN; // default throttle
 boolean startReading  = false;        // default to not reading 
@@ -54,7 +67,7 @@ void setup() {
   delay(2000);
   Serial.println("Arming........After delay");  
 
-  // when running arduino without computer, after seeing the onboard LED goes on and then off
+  // when running arduino without computer, after seeing the onboard LED goes on and then off (on the board)
   // I will know the setup had completed and the arduino is now in the loop 
   digitalWrite(LED_BUILTIN, HIGH);
   delay(1000);
